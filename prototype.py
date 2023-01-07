@@ -4,7 +4,7 @@ import sys
 import random
  
 pygame.init()
-vec = pygame.math.Vector2 #2 for two dimensional
+vec = pygame.math.Vector2  # 2 for two dimensional
  
 HEIGHT = 450
 WIDTH = 400
@@ -16,21 +16,22 @@ FramePerSec = pygame.time.Clock()
  
 displaysurface = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Game")
+
  
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
-        #self.image = pygame.image.load("character.png")
+        # self.image = pygame.image.load("character.png")
         self.surf = pygame.Surface((30, 30))
-        self.surf.fill((128,255,40))
+        self.surf.fill((128, 255, 40))
         self.rect = self.surf.get_rect()
    
         self.pos = vec((10, 360))
-        self.vel = vec(0,0)
-        self.acc = vec(0,0)
+        self.vel = vec(0, 0)
+        self.acc = vec(0, 0)
  
     def move(self):
-        self.acc = vec(0,0.5)
+        self.acc = vec(0, 0.5)
     
         pressed_keys = pygame.key.get_pressed()
                 
@@ -53,11 +54,10 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         hits = pygame.sprite.spritecollide(self, platforms, False)
         if hits:
-           self.vel.y = -15
- 
- 
+            self.vel.y = -15
+  
     def update(self):
-        hits = pygame.sprite.spritecollide(P1 ,platforms, False)
+        hits = pygame.sprite.spritecollide(P1, platforms, False)
         if P1.vel.y > 0:        
             if hits:
                 self.vel.y = 0
@@ -68,12 +68,13 @@ class platform(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.surf = pygame.Surface((WIDTH, 20))
-        self.surf.fill((255,0,0))
+        self.surf.fill((255, 0, 0))
         self.rect = self.surf.get_rect(center = (WIDTH/2, HEIGHT - 10))
  
     def move(self):
         pass
- 
+
+
 PT1 = platform()
 P1 = Player()
  
